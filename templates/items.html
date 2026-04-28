@@ -31,7 +31,12 @@
 
     <h1>All Meals</h1>
 
-    <p><a href="/add">Add another meal</a></p>
+    {% if meal_count == 0 %}
+    <p>Welcome! Start by adding your first meal.</p>
+    <a href="{{ url_for('add_meal')>
+{% else %}
+    <a href="{{ url_for('add_me</a>
+{% endif %}
 
     <ul>
         {% for meal in meals %}

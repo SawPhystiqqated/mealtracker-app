@@ -10,12 +10,19 @@
             font-weight: bold;
             text-decoration: none;
         }
+        .success { color: green; }
+        .error { color: red; }
 
         .register-link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <p class="{{ category }}">{{ message }}</p>
+  {% endfor %}
+{% endwith %}
 <body>
 
 <h1>Login</h1>

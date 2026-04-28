@@ -1,3 +1,5 @@
+from sqlalchemy.exc import IntegrityError
+from flask import flash
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Meal, User
@@ -75,7 +77,11 @@ def list_meals():
 
     user = User.query.get(session["user_id"])
     meals = Meal.query.filter_by(user_id=session["user_id"]).all()
-    return render_template("items.html", meals=meals, user=user)
+    return render_template(
+    "items.html",
+    meals=meals,
+    meal_count=len(meals)
+)
 
 @app.route("/delete/<int:meal_id>")
 def delete_meal(meal_id):
@@ -134,7 +140,10 @@ def register():
         try:
             db.session.add(user)
             db.session.commit()
+
+            flash("Account created successfully. Please log in.", "success")
             return redirect(url_for("login"))
+
         except IntegrityError:
             db.session.rollback()
             return render_template(
@@ -151,9 +160,17 @@ def login():
         password = request.form.get("password")
 
         user = User.query.filter_by(username=username).first()
+
         if user and user.check_password(password):
             session["user_id"] = user.id
-            flash("Logged in successfully!")
+
+            meal_count = Meal.query.filter_by(user_id=user.id).count()
+
+            if meal_count == 0:
+                flash("Welcome! Let’s create your first meal.", "success")
+                return redirect(url_for("add_meal"))
+
+            flash("Logged in successfully!", "success")
             return redirect(url_for("list_meals"))
 
         flash("Invalid username or password.", "error")
