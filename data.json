@@ -1,0 +1,135 @@
+[
+  {
+    "entryId": "3cc71809-c1f1-4089-83da-d5357546d854",
+    "userId": "demo-user",
+    "date": "2026-02-09",
+    "mealType": "lunch",
+    "mealName": "garden salad",
+    "servingSize": "500g",
+    "ingredients": [],
+    "calories": 958.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "halal"
+    ],
+    "isFavorite": false,
+    "notes": "ranch",
+    "createdAt": "2026-02-18T04:23:19Z",
+    "updatedAt": "2026-02-18T04:23:19Z"
+  },
+  {
+    "entryId": "c5fab8b5-9618-4dd6-b874-e009a0171f1c",
+    "userId": "demo-user",
+    "date": "2026-2-15",
+    "mealType": "lunch",
+    "mealName": "grilled chicken salad",
+    "servingSize": "300 g",
+    "ingredients": [],
+    "calories": 964.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "vegan"
+    ],
+    "isFavorite": false,
+    "notes": "ranch",
+    "createdAt": "2026-02-18T04:25:21Z",
+    "updatedAt": "2026-02-18T04:25:21Z"
+  },
+  {
+    "entryId": "c31a901e-93d1-4c61-bf4e-4ace5dcd6876",
+    "userId": "demo-user",
+    "date": "2026-02-17",
+    "mealType": "snack",
+    "mealName": "yughort",
+    "servingSize": "1 bowl",
+    "ingredients": [],
+    "calories": 200.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "kosher"
+    ],
+    "isFavorite": false,
+    "notes": "vanilla",
+    "createdAt": "2026-02-18T04:26:27Z",
+    "updatedAt": "2026-02-18T04:26:27Z"
+  },
+  {
+    "entryId": "078d5006-362c-40f1-9ded-aabb5061d319",
+    "userId": "demo-user",
+    "date": "2026-03-03",
+    "mealType": "dinner",
+    "mealName": "garden salad with grilled chicken",
+    "servingSize": "1 bowl",
+    "ingredients": [],
+    "calories": 890.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "vegan"
+    ],
+    "isFavorite": false,
+    "notes": "light dressing",
+    "createdAt": "2026-03-04T03:05:11Z",
+    "updatedAt": "2026-03-04T03:05:11Z"
+  },
+  {
+    "entryId": "2fd24615-1c70-43f5-9d46-45921eb4c637",
+    "userId": "demo-user",
+    "date": "2026-03-03",
+    "mealType": "dinner",
+    "mealName": "vegtable salad and tacos",
+    "servingSize": "900g",
+    "ingredients": [],
+    "calories": 1100.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "vegan"
+    ],
+    "isFavorite": false,
+    "notes": "avocado dressing",
+    "createdAt": "2026-03-04T03:28:02Z",
+    "updatedAt": "2026-03-04T03:28:02Z"
+  },
+  {
+    "entryId": "ab85940e-7e17-471d-a5ee-a69a6b17beb2",
+    "userId": "demo-user",
+    "date": "2026-03-17",
+    "mealType": "dinner",
+    "mealName": "Teriyaki Chicken",
+    "servingSize": "1 plate",
+    "ingredients": [],
+    "calories": 680.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "lean meat"
+    ],
+    "isFavorite": false,
+    "notes": "teriyaki sauce",
+    "createdAt": "2026-03-18T03:08:01Z",
+    "updatedAt": "2026-03-18T03:08:01Z"
+  },
+  {
+    "entryId": "407ef6c5-5cbf-4591-8896-cdd4dbbe01aa",
+    "userId": "demo-user",
+    "date": "2026-03-17",
+    "mealType": "dinner",
+    "mealName": "vegetable fried rice",
+    "servingSize": "1 plate",
+    "ingredients": [],
+    "calories": 800.0,
+    "targets": {},
+    "substitutions": [],
+    "dietaryFlags": [
+      "halal"
+    ],
+    "isFavorite": false,
+    "notes": "no dressing",
+    "createdAt": "2026-03-18T03:35:21Z",
+    "updatedAt": "2026-03-18T03:35:21Z"
+  }
+]
