@@ -65,6 +65,19 @@ input, textarea, select {
     border-radius: 4px;
 }
 
+input[type="date"] {
+    padding-right: 40px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 /* Navigation */
 .nav {
     display: flex;
@@ -241,8 +254,46 @@ a:hover {
     transform: translateY(-1px);
 }
 body {
-    background-image: url('/static/background.jpg');
+    background-image: url("/static/background_image.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+}
+/* Remove focus/selection highlight from links */
+a,
+a:focus,
+a:active,
+a:visited {
+    background-color: transparent !important;
+    outline: none;
+}
+
+::selection {
+    background: transparent;
+}
+input[type="date"] {
+    padding-right:
+    height 42px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+a,
+a:focus,
+a:active,
+a:visited,
+a:focus-visible {
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+::selection {
+    background: transparent;
 }
