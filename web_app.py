@@ -145,7 +145,7 @@ def register():
             db.session.add(user)
             db.session.commit()
 
-            flash("Account created successfully. Please log in.", "success")
+            flash("Account created successfully. Please log in.")
             return redirect(url_for("login"))
 
         except IntegrityError:
@@ -174,10 +174,10 @@ def login():
             meal_count = Meal.query.filter_by(user_id=user.id).count()
 
             if meal_count == 0:
-                flash("Welcome! Login to continue")
+                flash("Please login to continue")
                 return redirect(url_for("add_meal"))
 
-            flash("Logged in successfully!", "success")
+            flash("Login successful!")
             return redirect(url_for("list_meals"))
 
         flash("Invalid username or password.", "error")
@@ -187,8 +187,8 @@ def login():
 
 @app.route("/logout")
 def logout():
-    session.pop("user_id", None)
-    flash("You have been logged out.", "Logged out successful")
+    session.clear()   # clears user_id AND old flash messages
+    flash("You have successfully logged out")
     return redirect(url_for("login"))
 
 # --------- API Routes (Version 1) ---------
