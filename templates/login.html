@@ -1,46 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
-
-    <style>
-        .register {
-            color: blue;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .success { color: green; }
-        .error { color: red; }
-
-        .register-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>NutriLogic | Login</title>
+    {{ url_for('static', filename='styles.css') }}
 </head>
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% for category, message in messages %}
-    <p class="{{ category }}">{{ message }}</p>
-  {% endfor %}
-{% endwith %}
 <body>
 
-<h1>Login</h1>
+<div class="container">
 
-<form method="POST">
-    <label>Username:</label><br>
-    <input type="text" name="username" required><br><br>
+    <h1>NutriLogic</h1>
+    <h2>Login to continue</h2>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set category, message = messages[-1] %}
+        <p class="{{ category }}">{{ message }}</p>
+      {% endif %}
+    {% endwith %}
 
-    <button type="submit">Login</button>
-</form>
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
 
-<p>
-  Need an account?
-  <a href="{{ url_for('register') }}" class="register-link">Register</a>
-</p>
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p style="margin-top: 20px;">
+        Need an account?
+        {{ url_for('register') }}Register</a>
+    </p>
+
+</div>
 
 </body>
 </html>

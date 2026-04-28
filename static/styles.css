@@ -1,0 +1,115 @@
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    color: #212529;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2 {
+    color: #2c7be5;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button, .btn {
+    display: inline-block;
+    background-color: #2c7be5;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button:hover, .btn:hover {
+    background-color: #1a68d1;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.success {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.error {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Inputs */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #2c7be5;
+    font-weight: 500;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* Meal list */
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+li {
+    background: #f1f3f5;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+button {
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+p a {
+    color: #2c7be5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

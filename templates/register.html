@@ -1,39 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Register</title>
-
-    <style>
-        .login-link {
-            color: green;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .login-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <metautf-8">
+    <title>NutriLogic | Register</title>
+    {{ url_for('static', filename='styles.css') }}
 </head>
 <body>
 
-<h1>Create an Account</h1>
+<div class="container">
 
-<form method="POST">
-    <label>Username:</label><br>
-    <input type="text" name="username" required><br><br>
+    <h1>NutriLogic</h1>
+    <h2>Create an account</h2>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
 
-    <button type="submit">Register</button>
-</form>
+    <form method="POST">
+        <label>Username</label>
+        <input type="text" name="username" required>
 
-<p>
-  Already have an account?
-  <a href="{{ url_for('login') }}" class="login-link">Log in</a>
-</p>
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <p style="margin-top: 20px;">
+        Already have an account?
+        {{ url_for('login') }}Log in</a>
+    </p>
+
+</div>
 
 </body>
 </html>
