@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <metautf-8">
-    <title>NutriLogic | Register</title>
-    {{ url_for('static', filename='styles.css') }}
+    <meta charset="utf-8">
+    <title>NutriLogic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
 
 <div class="container">
@@ -26,10 +27,10 @@
         <button type="submit">Create Account</button>
     </form>
 
-    <p style="margin-top: 20px;">
-        Already have an account?
-        {{ url_for('login') }}Log in</a>
-    </p>
+<p>
+    Already have an account?
+    <a href="{{ url_for('login') }}">Login</a>
+</p>
 
 </div>
 
