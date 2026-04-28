@@ -75,13 +75,13 @@ def list_meals():
     if not require_login():
         return redirect(url_for("login"))
 
-    user = User.query.get(session["user_id"])
     meals = Meal.query.filter_by(user_id=session["user_id"]).all()
+
     return render_template(
-    "items.html",
-    meals=meals,
-    meal_count=len(meals)
-)
+        "items.html",
+        meals=meals,
+        meal_count=len(meals)
+    )
 
 @app.route("/delete/<int:meal_id>")
 def delete_meal(meal_id):
@@ -174,7 +174,7 @@ def login():
             meal_count = Meal.query.filter_by(user_id=user.id).count()
 
             if meal_count == 0:
-                flash("Welcome! Let’s create your first meal.", "success")
+                flash("Welcome! Login to continue")
                 return redirect(url_for("add_meal"))
 
             flash("Logged in successfully!", "success")

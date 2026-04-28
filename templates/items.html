@@ -1,3 +1,9 @@
+<p>
+  Logged in |
+  {{ url_for('logout') }}Logout</a>
+</p>
+<hr>
+
 <!doctype html>
 <html>
 <head>
@@ -19,6 +25,7 @@
   <a href="{{ url_for('logout') }}">Logout</a>
 </p>
 <hr>
+
 <p>
   Logged in as <strong>{{ user.username }}</strong> |
   <a href="/logout">Logout</a>
@@ -34,14 +41,29 @@
   {% endif %}
 {% endwith %}
 
-    <h1>All Meals</h1>
+    <h1>Your Meals</h1>
 
-    {% if meal_count == 0 %}
-    <p>Welcome! Start by adding your first meal.</p>
-    <a href="{{ url_for('add_meal')>
+{% if meal_count == 0 %}
+    <p>You don’t have any saved meals yet.</p>
+    <p>Get started by creating your first meal.</p>
+
+    <a href="{{ url_for('add_meal') }}">Create a New Meal</a>
 {% else %}
-    <a href="{{ url_for('add_me</a>
+    <a href="{{ url_for('add_meal') }}">Add Another Meal</a>
+
+    <ul>
+    {% for meal in meals %}
+        <li>
+            {{ meal.date }} |
+            {{ meal.mealType|title }} |
+            {{ meal.mealName }}
+            {{ url_for('edit_meal', meal_id=meal.id) }}Edit</a> |
+            {{ url_for('delete_meal', meal_id=meal.id) }}Delete</a>
+        </li>
+    {% endfor %}
+    </ul>
 {% endif %}
+
 
     <ul>
         {% for meal in meals %}
