@@ -116,26 +116,27 @@ def edit_meal(meal_id):
 
     return render_template("edit.html", meal=meal)
 
+from sqlalchemy.exc import IntegrityError
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+        username = request.form["username"]
+        password = request.form["password"]
 
-        # Check if user already exists
-        existing_user = User.query.filter_by(username=username).first()
-        if existing_user:
-            flash("Username already exists. Please choose another.")
-            return redirect(url_for("register"))
+        user = User(username=username)
+        user.set_password(password)
 
-        new_user = User(username=username)
-        new_user.set_password(password)
-
-        db.session.add(new_user)
-        db.session.commit()
-
-        flash("Registration successful! You can now log in.")
-        return redirect(url_for("login"))
+        try:
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for("login"))
+        except IntegrityError:
+            db.session.rollback()
+            return render_template(
+                "register.html",
+                error="Username already exists. Please choose another."
+            )
 
     return render_template("register.html")
 
