@@ -1,7 +1,12 @@
-<div class="nav">
-    {{ url_for('list_meals') }}My Meals</a>
-    {{ url_for('logout') }}Logout</a>
+<div class="navbar">
+    <div class="brand">🥗 NutriLogic</div>
+    <div>
+        <a href="{{ url_for('list_meals') }}">My Meals</a>
+        <a href="{{ url_for('add_meal') }}">Add Meal</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
 </div>
+  
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,9 +17,11 @@
 
 <div class="navbar">
     <div>    <div class="brand">NutriLogic</div>
-        {{ url_for('list_meals') }}My Meals</a>
-        {{ url_for('add_meal') }}Add Meal</a>
-        {{ url_for('logout') }}Logout</a>
+        <a href="{{ url_for('list_meals') }}">My Meals</a>
+
+        <a href="{{ url_for('add_meal') }}">Add Meal</a>
+
+        <a href="{{ url_for('logout'') }}">Logout</a>
     </div>
 </div>
 
