@@ -3,6 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>Login</title>
+
+    <style>
+        .register {
+            color: blue;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +31,8 @@
 </form>
 
 <p>
-  <a href="/register">Need an account? Register</a>
+  Need an account?
+  <a href="{{ url_for('register') }}" class="register-link">register</a>
 </p>
 
 </body>
