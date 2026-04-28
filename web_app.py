@@ -130,6 +130,10 @@ from sqlalchemy.exc import IntegrityError
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    
+    if "user_id" in session:
+        return redirect(url_for("list_meals"))
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -155,6 +159,9 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if "user_id" in session:
+        return redirect(url_for("list_meals"))
+    
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
@@ -181,7 +188,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop("user_id", None)
-    flash("Logged out successfully.")
+    flash("You have been logged out.", "Logged out successful")
     return redirect(url_for("login"))
 
 # --------- API Routes (Version 1) ---------

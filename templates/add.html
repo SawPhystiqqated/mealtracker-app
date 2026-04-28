@@ -15,6 +15,11 @@
   </style>
 </head>
 <body>
+<p>
+  Logged in |
+  <a href="{{ url_for('logout') }}">Logout</a>
+</p>
+<hr>
   <h1>Add Meal Entry</h1>
 
   <form method="POST" action="/add">

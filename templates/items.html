@@ -15,6 +15,11 @@
 </head>
 <body>
 <p>
+  Logged in |
+  <a href="{{ url_for('logout') }}">Logout</a>
+</p>
+<hr>
+<p>
   Logged in as <strong>{{ user.username }}</strong> |
   <a href="/logout">Logout</a>
 </p>
