@@ -1,20 +1,27 @@
+<div class="nav">
+    {{ url_for('list_meals') }}My Meals</a>
+    {{ url_for('logout') }}Logout</a>
+</div>
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Add Meal Entry</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 720px; margin: 24px auto; }
-    label { display:block; margin-top:12px; font-weight:600; }
-    input, textarea, select { width:100%; padding:8px; margin-top:6px; }
-    .row { display:flex; gap:12px; }
-    .row > div { flex:1; }
-    button { margin-top:16px; padding:10px 16px; }
-    .note { color:#555; font-size:0.9em; }
-    a { margin-left: 8px; }
-  </style>
+    <meta charset="utf-8">
+    <title>NutriLogic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
+<div class="navbar">
+    <div>    <div class="brand">NutriLogic</div>
+        {{ url_for('list_meals') }}My Meals</a>
+        {{ url_for('add_meal') }}Add Meal</a>
+        {{ url_for('logout') }}Logout</a>
+    </div>
+</div>
+
 <body>
+
+<div class="container">
+
 <p>
   Logged in |
   <a href="{{ url_for('logout') }}">Logout</a>
@@ -60,5 +67,6 @@
     <button type="submit">Save Meal</button>
     <a href="/list">View All Meals</a>
   </form>
+</div>
 </body>
 </html>
