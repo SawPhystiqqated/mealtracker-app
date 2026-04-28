@@ -72,7 +72,7 @@ def add_meal():
 
 @app.route("/list")
 def list_meals():
-    if not require_login():
+    if "user_id" not in session:
         return redirect(url_for("login"))
 
     meals = Meal.query.filter_by(user_id=session["user_id"]).all()
