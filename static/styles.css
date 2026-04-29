@@ -1,130 +1,45 @@
-/* ========= Base Reset ========= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: url("/static/background_image.jpg") no-repeat center center fixed;
-  background-size: cover;
-  color: #1f2937;
+    font-family: Arial, sans-serif;
+    background: url("/static/background_image.jpg") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    color: #333;
 }
 
-/* ========= Navbar ========= */
 .navbar {
-  background: #2c7be5;
-  color: white;
-  padding: 14px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background: #2c7be5;
+    color: white;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
 }
 
-.navbar a:hover {
-  text-decoration: underline;
-}
-
-.brand {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* ========= Layout ========= */
 .container {
-  max-width: 720px;
-  margin: 48px auto;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 32px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: 60px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 8px;
 }
 
-/* ========= Headings ========= */
 h1 {
-  color: #2563eb;
-  margin-bottom: 24px;
+    color: #2c7be5;
 }
 
-/* ========= Forms ========= */
-label {
-  font-weight: 500;
-  margin-top: 16px;
-  display: block;
-}
-
-input,
-select {
-  width: 100%;
-  height: 44px;
-  padding: 10px 12px;
-  margin-top: 6px;
-  border-radius: 6px;
-  border: 1px solid #cbd5f5;
-  font-size: 14px;
-}
-
-/* ✅ FINAL FIX FOR DATE PICKER WIDTH */
-input[type="date"] {
-  width: 100%;
-}
-
-/* ========= Buttons ========= */
-button {
-  width: 100%;
-  margin-top: 24px;
-  padding: 12px;
-  background: #2c7be5;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #1e60c1;
-}
-
-/* ========= Cards ========= */
-.meal-card {
-  margin-bottom: 16px;
-  padding: 18px;
-  background: #f9fafb;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-}
-
-.meal-actions {
-  margin-top: 8px;
-}
-
-.meal-actions a {
-  margin-right: 12px;
-  color: #6f42c1;
-}
-
-/* ========= Animations ========= */
-.container,
-.meal-card {
-  animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #2c7be5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }

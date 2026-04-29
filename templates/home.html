@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>NutriLogic</title>
-  {{ url_for('static', filename='styles.css') }}
-</head>
+    <meta charset="UTF-8">
+    <title>NutriLogic</title>
 
+    <!-- ✅ Correct way to include CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
+
 <div class="navbar">
-  <div class="brand">
-    {{ url_for('home') }}🥗 NutriLogic</a>
-  </div>
-  <div>
-    {{ url_for('login') }}Login</a>
-    {{ url_for('register') }}Register</a>
-  </div>
+    <div class="brand">
+        <a href="{{ url_for('home') }}">🥗 NutriLogic</a>
+    </div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+    </div>
 </div>
 
 <div class="container">
-  <h1>Welcome to NutriLogic</h1>
-  <p>
-    NutriLogic is a personal nutrition tracking application designed to help users
-    understand, reflect on, and improve their eating habits.
-  </p>
-  <p>
-    By logging meals and reviewing patterns, users can make informed decisions
-    aligned with personal health objectives.
-  </p>
-  <p>
-    {{ url_for('register') }}Get Started</a>
-  </p>
+    <h1>Welcome to NutriLogic</h1>
+
+    <p>
+        NutriLogic is a personal nutrition tracking application designed to help users
+        understand, reflect on, and improve their eating habits.
+    </p>
+
+    <p>
+        By logging meals and reviewing patterns, users can make informed decisions
+        aligned with personal health objectives.
+    </p>
+
+    <a class="btn" href="{{ url_for('register') }}">Get Started</a>
 </div>
+
 </body>
 </html>
