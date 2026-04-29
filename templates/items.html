@@ -1,55 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>NutriLogic | My Meals</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>My Meals</title>
+  {{ url_for('static', filename='styles.css') }}
 </head>
-
 <body>
 
 <div class="navbar">
-    <div class="brand">
-        <a href="{{ url_for('home') }}">🥗 NutriLogic</a>
-    </div>
-    <div>
-        <a href="{{ url_for('list_meals') }}">My Meals</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
-    </div>
+  <div class="brand">
+    {{ url_for('home') }}🥗 NutriLogic</a>
+  </div>
+  <div>
+    {{ url_for('add_meal') }}Add Meal</a>
+    {{ url_for('logout') }}Logout</a>
+  </div>
 </div>
 
 <div class="container">
-
 <h1>Your Meals</h1>
 
 {% for meal in meals %}
-    <div class="meal-card">
-        <strong>{{ meal.date }}</strong><br>
-        {{ meal.mealType|title }} — {{ meal.mealName }}
+<div class="meal-card">
+  <strong>{{ meal.date }}</strong><br>
+  {{ meal.mealType|title }} — {{ meal.mealName }}
 
-        <!-- ✅ ADD THIS BLOCK HERE -->
-        <p class="diet-tip">
-            Suggested alternative:
-            {% if meal.mealType == 'dinner' %}
-                Consider grilled vegetables or a lean protein swap.
-            {% elif meal.mealType == 'breakfast' %}
-                Try whole grains or a high‑fiber option.
-            {% else %}
-                Choose lower‑sodium or plant‑based alternatives if available.
-            {% endif %}
-        </p>
-        <!-- ✅ END ADD -->
+  <p style="font-size:13px;color:#6b7280;">
+    Suggestion:
+    {% if meal.mealType == 'dinner' %}
+    Consider grilled vegetables or lean protein.
+    {% elif meal.mealType == 'breakfast' %}
+    Whole‑grain or high‑fibre options may help.
+    {% else %}
+    Plant‑based or lower‑sodium alternatives suggested.
+    {% endif %}
+  </p>
 
-        <div class="meal-actions">
-            <a href="{{ url_for('edit_meal', meal_id=meal.id) }}">Edit</a>
-            <a href="{{ url_for('delete_meal', meal_id=meal.id) }}">Delete</a>
-        </div>
-    </div>
+  <div class="meal-actions">
+    {{ url_for('edit_meal', meal_id=meal.id) }}Edit</a>
+    {{ url_for('delete_meal', meal_id=meal.id) }}Delete</a>
+  </div>
+</div>
 {% endfor %}
 
-{% endif %}
-
 </div>
-
 </body>
 </html>
