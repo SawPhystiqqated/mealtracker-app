@@ -22,21 +22,20 @@
 
     {% if meals|length == 0 %}
         <p>You don’t have any meals yet.</p>
-        <a class="btn" href="{{ url_for('add_meal') }}">Create Your First Meal</a>
+        <a href="{{ url_for('add_meal') }}">Create your first meal</a>
     {% else %}
         {% for meal in meals %}
             <div class="meal-card">
                 <strong>{{ meal.date }}</strong><br>
                 {{ meal.mealType|title }} — {{ meal.mealName }}
 
-                <p style="font-size: 13px; color: #6b7280;">
-                    Suggestion:
-                    {% if meal.mealType == 'dinner' %}
-                        Consider grilled vegetables or lean protein.
-                    {% elif meal.mealType == 'breakfast' %}
-                        Whole‑grain or high‑fiber options may help.
+                <p style="font-size: 13px; color: #666;">
+                    {% if meal.mealType == 'breakfast' %}
+                        Suggestion: Try whole grains or high‑fiber options.
+                    {% elif meal.mealType == 'dinner' %}
+                        Suggestion: Consider lean protein or vegetables.
                     {% else %}
-                        Plant‑based or lower‑sodium options are good alternatives.
+                        Suggestion: Opt for lower‑sodium alternatives.
                     {% endif %}
                 </p>
 
