@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>NutriLogic | Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="brand">
+        <a href="{{ url_for('home') }}">🥗 NutriLogic</a>
+    </div>
+    <div>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Welcome to NutriLogic</h1>
+
+    <p>
+        NutriLogic is a nutrition tracking and decision-support application designed
+        to help users become more aware of their eating habits, meal patterns, and dietary needs.
+    </p>
+
+    <p>
+        The application allows you to log meals, review your intake history, and make
+        informed food choices based on personal preferences and health goals.
+    </p>
+
+    <p>
+        Whether you're managing dietary restrictions, building healthier habits,
+        or simply staying mindful of nutrition, NutriLogic is designed to support you.
+    </p>
+
+    <p>
+        <a href="{{ url_for('register') }}">Get Started</a>
+    </p>
+</div>
+
+</body>
+</html>
