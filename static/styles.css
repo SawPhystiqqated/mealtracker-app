@@ -1,9 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background: url("/static/background_image.jpg") no-repeat center center fixed;
-    background-size: cover;
+    background: #f4f6fa;
     margin: 0;
-    color: #333;
 }
 
 .navbar {
@@ -25,21 +23,19 @@ body {
 .container {
     max-width: 700px;
     margin: 60px auto;
-    background: rgba(255, 255, 255, 0.95);
+    background: white;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
-h1 {
-    color: #2c7be5;
+.meal-card {
+    background: #f1f3f9;
+    padding: 15px;
+    margin-top: 12px;
+    border-radius: 4px;
 }
 
-.btn {
-    display: inline-block;
+button {
     margin-top: 20px;
-    padding: 12px 20px;
-    background: #2c7be5;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    padding: 10px 15px;
 }
