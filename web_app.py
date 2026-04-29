@@ -10,19 +10,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 with app.app_context():
+    db.drop_all()      # ← this fixes the schema mismatch
     db.create_all()
 
-
-# -----------------------
-# Helpers
-# -----------------------
-def user_logged_in():
+def logged_in():
     return "user_id" in session
 
-
-# -----------------------
-# Routes
-# -----------------------
 
 @app.route("/")
 def home():
@@ -52,12 +45,11 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        user = User.query.filter_by(
+            username=request.form["username"]
+        ).first()
 
-        user = User.query.filter_by(username=username).first()
-
-        if user and user.password == password:
+        if user and user.password == request.form["password"]:
             session["user_id"] = user.id
             return redirect(url_for("list_meals"))
 
@@ -75,7 +67,7 @@ def logout():
 
 @app.route("/list")
 def list_meals():
-    if not user_logged_in():
+    if not logged_in():
         return redirect(url_for("login"))
 
     meals = Meal.query.filter_by(user_id=session["user_id"]).all()
@@ -84,14 +76,14 @@ def list_meals():
 
 @app.route("/add", methods=["GET", "POST"])
 def add_meal():
-    if not user_logged_in():
+    if not logged_in():
         return redirect(url_for("login"))
 
     if request.method == "POST":
         meal = Meal(
             date=request.form["date"],
-            mealType=request.form["mealType"],
-            mealName=request.form["mealName"],
+            meal_type=request.form["mealType"],
+            meal_name=request.form["mealName"],
             user_id=session["user_id"]
         )
         db.session.add(meal)
@@ -99,14 +91,3 @@ def add_meal():
         return redirect(url_for("list_meals"))
 
     return render_template("add.html")
-
-
-@app.route("/delete/<int:meal_id>")
-def delete_meal(meal_id):
-    if not user_logged_in():
-        return redirect(url_for("login"))
-
-    meal = Meal.query.get_or_404(meal_id)
-    db.session.delete(meal)
-    db.session.commit()
-    return redirect(url_for("list_meals"))
