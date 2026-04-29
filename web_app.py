@@ -40,8 +40,8 @@ with app.app_context():
 # Helper
 # ===============================
 
-def logged_in():
-    return "user_id" in session
+def user_is_logged_in():
+    return "user_id" in session   
 
 # ===============================
 # Routes
@@ -50,7 +50,6 @@ def logged_in():
 @app.route("/")
 def home():
     return render_template("home.html")
-
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -71,7 +70,6 @@ def register():
 
     return render_template("register.html")
 
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -89,12 +87,10 @@ def login():
 
     return render_template("login.html")
 
-
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("home"))
-
 
 @app.route("/list")
 def list_meals():
@@ -104,7 +100,6 @@ def list_meals():
     meals = Meal.query.filter_by(user_id=session["user_id"]).all()
     return render_template("items.html", meals=meals)
 
-
 @app.route("/add", methods=["GET", "POST"])
 def add_meal():
     if not logged_in():
@@ -112,6 +107,14 @@ def add_meal():
 
     if request.method == "POST":
         meal = Meal(
-            date=request.form["date"],
+        date=request.form["date"],
             mealType=request.form["mealType"],
             mealName=request.form["mealName"],
+            user_id=session["user_id"]
+        )
+        db.session.add(meal)
+        db.session.commit()
+
+        flash("Meal added successfully.", "success")
+        return redirect(url_for("list_meals"))
+    
