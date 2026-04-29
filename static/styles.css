@@ -1,49 +1,169 @@
-body {
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #f7f9fc;
-    margin: 0;
-    padding: 0;
-    color: #212529;
+/* =========================
+   Global Reset & Base
+   =========================%;   ========================= */
 }
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background-color: #f5f7fb;
+    color: #212529;
+    line-height: 1.5;
+}
+
+/* Remove browser link highlights */
+a,
+a:visited,
+a:focus,
+a:active,
+a:focus-visible {
+    background: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none;
+    color: #6f42c1;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+
+.navbar {
+    background-color: #2c7be5;
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 18px;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+}
+
+/* =========================
+   Layout Container
+   ========================= */
 
 .container {
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(3px);
+    max-width: 760px;
+    margin: 32px auto;
+    padding: 28px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-h1, h2 {
+/* =========================
+   Headings
+   ========================= */
+
+h1 {
     color: #2c7be5;
     margin-bottom: 20px;
 }
 
-/* Buttons */
-button, .btn {
-    display: inline-block;
-    background-color: #2c7be5;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+/* =========================
+   Forms
+   ========================= */
+
+label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 18px;
     font-size: 14px;
 }
 
-button:hover, .btn:hover {
+/* Fix date picker */
+input[type="date"] {
+    padding-right: 42px;
+    height: 44px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover {
     background-color: #1a68d1;
 }
 
-.btn-secondary {
-    background-color: #6c757d;
+/* =========================
+   Meal Cards
+   ========================= */
+
+.meal-card {
+    background: #f8f9fc;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 14px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.btn-secondary:hover {
-    background-color: #5a6268;
+.meal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
-.btn-danger {
-    background-color: #dc3545;
+.meal-actions {
+    margin-top: 8px;
 }
+
+.meal-actions a {
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+/* =========================
+   Messages
+   ========================= */
 
 .success {
     color: #28a745;
@@ -55,245 +175,26 @@ button:hover, .btn:hover {
     font-weight: 500;
 }
 
-/* Inputs */
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    margin-bottom: 18px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+/* =========================
+   Animations (Safe)
+   ========================= */
+
+.container,
+.meal-card {
+    animation: fadeIn 0.3s ease-out;
 }
 
-input[type="date"] {
-    padding-right: 40px;
-    height: 44px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+
+
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    opacity: 0.9;
-}
+html, body {
 
-/* Navigation */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.nav a {
-    text-decoration: none;
-    color: #2c7be5;
-    font-weight: 500;
-}
-
-.nav a:hover {
-    text-decoration: underline;
-}
-
-/* Meal list */
-ul {
-    padding-left: 0;
-    list-style: none;
-}
-
-li {
-    background: #f1f3f5;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-}
-button {
-    width: 100%;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-p a {
-    color: #2c7be5;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-p a:hover {
-    text-decoration: underline;
-}
-/* Top Navigation Bar */
-.navbar {
-    background-color: #2c7be5;
-    color: white;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar .brand {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.navbar a {
-    color: white;
-    margin-left: 15px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-}
-
-.brand::before {
-    content: "🥗 ";
-}
-.meal-card {
-    background: #ffffff;
-    border: 1px solid #e2e6ea;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.meal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.meal-actions a {
-    margin-right: 10px;
-    font-weight: 500;
-}
-button,.btn {
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-button:hover,
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-input:focus, textarea:focus {inset:focus,;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(44, 123, 229, 0.15);
-}
-
-.meal-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.meal-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-.navbar a {
-    transition: opacity 0.2s ease;
-}
-
-.navbar a:hover {
-    opacity: 0.8;
-}
-
-button {
-    transition: transform 0.1s ease;
-}
-
-button:hover {
-    transform: translateY(-1px);
-}
-
-background highlight */
-a {
-    background: none;
-    outline: none;
-}
-
-a:focus,
-a:active {
-    background: none;
-    outline: none;
-}
-/* Styled links */
-a {
-    color: #6f42c1; /* Purple */
-    text-decoration: none;
-    font-weight: 600;
-}
-
-a:hover {
-    color: #5a32a3;
-    text-decoration: underline;
-}
-.link-purple {
-    color: #6f42c1;
-}
-
-.link-green {
-    color: #28a745;
-}
-
-.link-red {
-    color: #dc3545;
-}
-
-.link-blue {
-    color: #2c7be5;
-}
-/* Link hover animation */
-a {
-    transition: color 0.2s ease, transform 0.15s ease;
-}
-
-a:hover {
-    transform: translateY(-1px);
-}
-body {
-    background-image: url("/static/background_image.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-/* Remove focus/selection highlight from links */
-a,
-a:focus,
-a:active,
-a:visited {
-    background-color: transparent !important;
-    outline: none;
-}
-
-::selection {
-    background: transparent;
-}
-input[type="date"] {
-    padding-right:
-    height 42px;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
-input[type="date"]:hover::-webkit-calendar-picker-indicator {
-    opacity: 1;
-}
-a,
-a:focus,
-a:active,
-a:visited,
-a:focus-visible {
-    background-color: transparent !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-::selection {
-    background: transparent;
-}
+    
