@@ -15,5 +15,4 @@ class Meal(db.Model):
     date = db.Column(db.String(20), nullable=False)
     meal_type = db.Column(db.String(50), nullable=False)
     meal_name = db.Column(db.String(200), nullable=False)
-
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
