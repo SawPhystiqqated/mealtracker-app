@@ -82,9 +82,14 @@ def add_meal():
     if request.method == "POST":
         meal = Meal(
             date=request.form["date"],
-            meal_type=request.form["mealType"],
-            meal_name=request.form["mealName"],
-            user_id=session["user_id"]
+            meal_type=request.form["meal_type"],
+            meal_name=request.form["meal_name"],
+            serving_size=request.form.get("serving_size"),
+            calories=int(request.form.get("calories", 0)),
+            protein=int(request.form.get("protein", 0)),
+            carbs=int(request.form.get("carbs", 0)),
+            fats=int(request.form.get("fats", 0)),
+            user_id=session["user_id"],
         )
         db.session.add(meal)
         db.session.commit()
