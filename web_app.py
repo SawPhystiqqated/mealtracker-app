@@ -75,24 +75,30 @@ def list_meals():
 
 
 @app.route("/add", methods=["GET", "POST"])
-def add_meal():
-    if not logged_in():
+def list_meals():
+    if "user_id" not in session:
         return redirect(url_for("login"))
 
     if request.method == "POST":
-        meal = Meal(
-            date=request.form["date"],
-            meal_type=request.form["meal_type"],
-            meal_name=request.form["meal_name"],
-            serving_size=request.form.get("serving_size"),
-            calories=int(request.form.get("calories", 0)),
-            protein=int(request.form.get("protein", 0)),
-            carbs=int(request.form.get("carbs", 0)),
-            fats=int(request.form.get("fats", 0)),
-            user_id=session["user_id"],
-        )
-        db.session.add(meal)
-        db.session.commit()
-        return redirect(url_for("list_meals"))
+        try:
+            meal = Meal(
+                date=request.form.get("date"),
+                meal_type=request.form.get("mealType"),  # MUST match form
+                meal_name=request.form.get("mealName"),
+                serving_size=request.form.get("serving_size"),
+                calories=request.form.get("calories"),
+                protein=request.form.get("protein"),
+                carbs=request.form.get("carbs"),
+                fats=request.form.get("fats"),
+                user_id=session["user_id"]
+            )
+
+            db.session.add(meal)
+            db.session.commit()
+            return redirect(url_for("list_meals"))
+
+        except Exception as e:
+            print("ADD MEAL ERROR:", e)
+            return "Error saving meal", 400
 
     return render_template("add.html")
