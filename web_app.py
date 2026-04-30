@@ -10,8 +10,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 with app.app_context():
-    db.drop_all()      # ← this fixes the schema mismatch
-    db.create_all()
+    db.drop_all(bind=None)
+    db.create_all(bind=None)
 
 def logged_in():
     return "user_id" in session
