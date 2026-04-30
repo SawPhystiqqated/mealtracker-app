@@ -79,33 +79,42 @@ def add_meal():
         return redirect(url_for("login"))
 
     if request.method == "POST":
+        form = request.form
 
-        # Convert form safely to a dict
-        form = request.form.to_dict()
+        # Required fields
+        date = form.get("date")
+        meal_type = form.get("mealType")
+        meal_name = form.get("mealName")
+
+        if not date or not meal_type or not meal_name:
+            return "Date, meal type, and meal name are required", 400
+
+        # Optional numeric fields (convert safely)
+        def to_int(value):
+            try:
+                return int(value) if value and value.strip() != "" else None
+            except ValueError:
+                return None
+
+        meal = Meal(
+            date=date,
+            meal_type=meal_type,
+            meal_name=meal_name,
+            serving_size=form.get("serving_size") or None,
+            calories=to_int(form.get("calories")),
+            protein=to_int(form.get("protein")),
+            carbs=to_int(form.get("carbs")),
+            fats=to_int(form.get("fats")),
+            user_id=session["user_id"]
+        )
 
         try:
-            meal = Meal(
-                date=form.get("date"),
-                meal_type=form.get("mealType"),
-                meal_name=form.get("mealName"),
-
-                serving_size=form.get("serving_size"),
-
-                calories=int(form["calories"]) if form.get("calories") else None,
-                protein=int(form["protein"]) if form.get("protein") else None,
-                carbs=int(form["carbs"]) if form.get("carbs") else None,
-                fats=int(form["fats"]) if form.get("fats") else None,
-
-                user_id=session["user_id"]
-            )
-
             db.session.add(meal)
             db.session.commit()
             return redirect(url_for("list_meals"))
-
         except Exception as e:
-            print("ADD MEAL FAILED:", repr(e))
-            print("FORM DATA:", form)
+            db.session.rollback()
+            print("SAVE ERROR:", e)
             return "Failed to save meal", 500
 
     return render_template("add.html")
