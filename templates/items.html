@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Meals</title>
+    <title>NutriLogic | My Meals</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
 <div class="navbar">
-    <a href="{{ url_for('home') }}">🥗 NutriLogic</a>
-
+     <div class="brand">
+        <a href="{{ url_for('home') }}">🥗 NutriLogic</a>
+    </div>
     <div>
         <a href="{{ url_for('list_meals') }}">My Meals</a>
         <a href="{{ url_for('add_meal') }}">Add Meal</a>
@@ -21,25 +22,28 @@
     <h1>Your Meals</h1>
 
     {% if meals|length == 0 %}
-        <p>No meals yet.</p>
+        <p>No meals saved yet.</p>
     {% else %}
         {% for meal in meals %}
-<div class="meal-card">
-    <strong>{{ meal.date }}</strong><br>
-    {{ meal.meal_type|title }} — {{ meal.meal_name }}
+            <div class="meal-card">
 
-    {% if meal.serving_size %}
-      <div>Serving Size: {{ meal.serving_size }}</div>
-    {% endif %}
-    {% if meal.calories %}
-      <div>Calories: {{ meal.calories }}</div>
-    {% endif %}
+                <strong>{{ meal.date }}</strong><br>
+                {{ meal.meal_type|title }} — {{ meal.meal_name }}
 
-    <div class="meal-actions">
-        <a href="{{ url_for('edit_meal', meal_id=meal.id) }}">Edit</a>
-        <a href="{{ url_for('delete_meal', meal_id=meal.id) }}">Delete</a>
-    </div>
-</div>
+                <div class="meal-details">
+                    <div>Serving Size: {{ meal.serving_size }}</div>
+                    <div>Calories: {{ meal.calories }}</div>
+                    <div>Protein: {{ meal.protein }} g</div>
+                    <div>Carbohydrates: {{ meal.carbs }} g</div>
+                    <div>Fats: {{ meal.fats }} g</div>
+                </div>
+
+                <div class="meal-actions">
+                    <a href="{{ url_for('edit_meal', meal_id=meal.id) }}">Edit</a>
+                    <a href="{{ url_for('delete_meal', meal_id=meal.id) }}">Delete</a>
+                </div>
+
+            </div>
         {% endfor %}
     {% endif %}
 </div>
