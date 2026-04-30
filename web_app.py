@@ -73,23 +73,29 @@ def list_meals():
     meals = Meal.query.filter_by(user_id=session["user_id"]).all()
     return render_template("items.html", meals=meals)
 
-
 @app.route("/add", methods=["GET", "POST"])
-def list_meals():
+def add_meal():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
     if request.method == "POST":
+
+        # Convert form safely to a dict
+        form = request.form.to_dict()
+
         try:
             meal = Meal(
-                date=request.form.get("date"),
-                meal_type=request.form.get("mealType"),  # MUST match form
-                meal_name=request.form.get("mealName"),
-                serving_size=request.form.get("serving_size"),
-                calories=request.form.get("calories"),
-                protein=request.form.get("protein"),
-                carbs=request.form.get("carbs"),
-                fats=request.form.get("fats"),
+                date=form.get("date"),
+                meal_type=form.get("mealType"),
+                meal_name=form.get("mealName"),
+
+                serving_size=form.get("serving_size"),
+
+                calories=int(form["calories"]) if form.get("calories") else None,
+                protein=int(form["protein"]) if form.get("protein") else None,
+                carbs=int(form["carbs"]) if form.get("carbs") else None,
+                fats=int(form["fats"]) if form.get("fats") else None,
+
                 user_id=session["user_id"]
             )
 
@@ -98,7 +104,8 @@ def list_meals():
             return redirect(url_for("list_meals"))
 
         except Exception as e:
-            print("ADD MEAL ERROR:", e)
-            return "Error saving meal", 400
+            print("ADD MEAL FAILED:", repr(e))
+            print("FORM DATA:", form)
+            return "Failed to save meal", 500
 
     return render_template("add.html")
