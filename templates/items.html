@@ -8,8 +8,9 @@
 <body>
 
 <div class="navbar">
-    <a class="brand" href="{{ url_for('home') }}">🥗 NutriLogic</a>
+    {{ url_for('home') }}🥗 NutriLogic</a>
     <div>
+        <a href="{{ url_for('list_meals') }}">My Meals</a>
         <a href="{{ url_for('add_meal') }}">Add Meal</a>
         <a href="{{ url_for('logout') }}">Logout</a>
     </div>
@@ -22,10 +23,22 @@
         <p>No meals yet.</p>
     {% else %}
         {% for meal in meals %}
-            <div class="meal-card">
-                <strong>{{ meal.date }}</strong><br>
-                {{ meal.meal_type|title }} — {{ meal.meal_name }}
-            </div>
+<div class="meal-card">
+    <strong>{{ meal.date }}</strong><br>
+    {{ meal.meal_type|title }} — {{ meal.meal_name }}
+
+    {% if meal.serving_size %}
+      <div>Serving Size: {{ meal.serving_size }}</div>
+    {% endif %}
+    {% if meal.calories %}
+      <div>Calories: {{ meal.calories }}</div>
+    {% endif %}
+
+    <div class="meal-actions">
+        {{ url_for('edit_meal', meal_id=meal.id) }}Edit</a> |
+        {{ url_for('delete_meal', meal_id=meal.id) }}Delete</a>
+    </div>
+</div>
         {% endfor %}
     {% endif %}
 </div>
