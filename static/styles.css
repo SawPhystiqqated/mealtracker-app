@@ -93,3 +93,28 @@ button {
     margin-top: 10px;
     font-weight: 600;
 }
+.meal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.meal-grid div {
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-grid label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.meal-grid input,
+.meal-grid select {
+    padding: 8px;
+}
+
+.meal-grid .full {
+    grid-column: span 2;
+    text-align: center;
+}
