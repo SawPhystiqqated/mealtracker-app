@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6fa;
+    background: url("/static/background.jpg") no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
 }
 
@@ -21,6 +22,7 @@ body {
 }
 
 .container {
+    background: rgba(255, 255, 255, 0.92);
     max-width: 700px;
     margin: 60px auto;
     background: white;
