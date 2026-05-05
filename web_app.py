@@ -98,7 +98,6 @@ def add_meal():
             date=date,
             meal_type=meal_type,
             meal_name=meal_name,
-            serving_size=serving_size,
             calories=calories,
             user_id=session["user_id"]
         )
