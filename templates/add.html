@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add a Meal</title>
+    <title>Add Meal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -18,57 +18,29 @@
 <div class="container">
     <h1>Add a Meal</h1>
 
-    <form method="POST" class="meal-grid">
+    <form method="POST">
+        <label>Date</label>
+        <input type="date" name="date" required>
 
-        <div>
-            <label>Date</label>
-            <input type="date" name="date" required>
-        </div>
+        <label>Meal Type</label>
+        <select name="meal_type" required>
+            <option value="">Select one</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+        </select>
 
-        <div>
-            <label>Meal Type</label>
-            <select name="mealType" required>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-                <option value="snack">Snack</option>
-            </select>
-        </div>
+        <label>Meal Name</label>
+        <input type="text" name="meal_name" required>
 
-        <div>
-            <label>Meal Name</label>
-            <input type="text" name="mealName" required>
-        </div>
+        <label>Serving Size</label>
+        <input type="text" name="serving_size">
 
-        <div>
-            <label>Serving Size</label>
-            <input type="text" name="serving_size">
-        </div>
+        <label>Calories</label>
+        <input type="number" name="calories">
 
-        <div>
-            <label>Calories</label>
-            <input type="number" name="calories">
-        </div>
-
-        <div>
-            <label>Protein (g)</label>
-            <input type="number" name="protein">
-        </div>
-
-        <div>
-            <label>Carbohydrates (g)</label>
-            <input type="number" name="carbs">
-        </div>
-
-        <div>
-            <label>Fats (g)</label>
-            <input type="number" name="fats">
-        </div>
-
-        <div class="full">
-            <button type="submit">Save Meal</button>
-        </div>
-
+        <button type="submit">Save Meal</button>
     </form>
 </div>
 

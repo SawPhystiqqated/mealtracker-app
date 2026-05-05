@@ -79,42 +79,32 @@ def add_meal():
         return redirect(url_for("login"))
 
     if request.method == "POST":
-        form = request.form
-
-        # Required fields
-        date = form.get("date")
-        meal_type = form.get("mealType")
-        meal_name = form.get("mealName")
+        date = request.form.get("date")
+        meal_type = request.form.get("meal_type")
+        meal_name = request.form.get("meal_name")
 
         if not date or not meal_type or not meal_name:
-            return "Date, meal type, and meal name are required", 400
+            return "Missing required fields", 400
 
-        # Optional numeric fields (convert safely)
-        def to_int(value):
-            try:
-                return int(value) if value and value.strip() != "" else None
-            except ValueError:
-                return None
+        serving_size = request.form.get("serving_size")
+        calories = request.form.get("calories")
+
+        try:
+            calories = int(calories) if calories else None
+        except ValueError:
+            calories = None
 
         meal = Meal(
             date=date,
             meal_type=meal_type,
             meal_name=meal_name,
-            serving_size=form.get("serving_size") or None,
-            calories=to_int(form.get("calories")),
-            protein=to_int(form.get("protein")),
-            carbs=to_int(form.get("carbs")),
-            fats=to_int(form.get("fats")),
+            serving_size=serving_size,
+            calories=calories,
             user_id=session["user_id"]
         )
 
-        try:
-            db.session.add(meal)
-            db.session.commit()
-            return redirect(url_for("list_meals"))
-        except Exception as e:
-            db.session.rollback()
-            print("SAVE ERROR:", e)
-            return "Failed to save meal", 500
+        db.session.add(meal)
+        db.session.commit()
+        return redirect(url_for("list_meals"))
 
     return render_template("add.html")
